@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream E-Gift Card Calculator</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <h1 style="text-align: center; padding-top: 20px;">Stream E-Gift Card Calculator</h1>
+    <form id="calculator-form">
+        <input type="number" id="target" placeholder="Enter Amount" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    <!-- Total Cost and Balance display -->
+    <div class="cost-container">
+        <div>
+            <h3>Total Cost:</h3>
+            <p id="total-cost">0</p>
+        </div>
+        <div>
+            <h3>Balance:</h3>
+            <p id="balance">0</p>
+        </div>
+    </div>
+
+    <div class="checkbox-group">
+        <!-- Images clickable to toggle selection -->
+        <label>
+            <img src="assets/e1000.png" alt="1000" data-value="1000">
+            <div class="count-text"></div>
+        </label>
+        <label>
+            <img src="assets/e500.png" alt="500" data-value="500">
+            <div class="count-text"></div>
+        </label>
+        <label>
+            <img src="assets/e250.png" alt="250" data-value="250">
+            <div class="count-text"></div>
+        </label>
+        <label>
+            <img src="assets/e150.png" alt="150" data-value="150">
+            <div class="count-text"></div>
+        </label>
+        <label>
+            <img src="assets/e99.png" alt="99" data-value="99">
+            <div class="count-text"></div>
+        </label>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
