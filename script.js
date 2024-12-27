@@ -39,21 +39,19 @@ document.getElementById("calculator-form").addEventListener("submit", function (
     event.preventDefault();
     const userInput = parseInt(document.getElementById("target").value);
     const numbers = Array.from(document.querySelectorAll('.checkbox-group img.selected')).map(img => parseInt(img.dataset.value));
-    const resultDiv = document.getElementById("result");
     const totalCostDiv = document.getElementById("total-cost");
     const balanceDiv = document.getElementById("balance");
+    const cardsNeededDiv = document.querySelector(".count-text");
 
-    // Clear previous results (total cost, balance, and counts)
+    // Clear previous results (total cost, balance, and card counts)
     totalCostDiv.textContent = "0";
     balanceDiv.textContent = "0";
+    cardsNeededDiv.textContent = "0";
 
-    // Clear any previously displayed counts below the images
-    document.querySelectorAll('.checkbox-group img').forEach(img => {
-        const countText = img.parentElement.querySelector('.count-text');
-        if (countText) {
-            countText.remove();
-        }
-    });
+    if (numbers.length === 0) {
+        cardsNeededDiv.textContent = "Please select at least one gift card.";
+        return;
+    }
 
     // Call the function to calculate the best combination
     const { combination, exceedingBalance } = findMinExceedingBalance(userInput, numbers);
@@ -65,33 +63,19 @@ document.getElementById("calculator-form").addEventListener("submit", function (
         }, {});
 
         // Update Total Cost and Balance containers
-        totalCostDiv.textContent = combination.reduce((sum, num) => sum + num, 0);
-        balanceDiv.textContent = exceedingBalance;
+        totalCostDiv.textContent = `${combination.reduce((sum, num) => sum + num, 0)} Rs`;
+        balanceDiv.textContent = `${exceedingBalance} Rs`;
 
-        // Update the result below the respective numbers
-        combination.forEach(num => {
-            const img = document.querySelector(`.checkbox-group img[data-value='${num}']`);
-            const count = countNumbers[num];
-        
-            // Add count next to the selected image (if not already added)
-            let countText = img.parentElement.querySelector('.count-text');
-            if (!countText) {
-                countText = document.createElement('div');
-                countText.classList.add('count-text');
-                img.parentElement.appendChild(countText);
-            }
-            countText.textContent = `${count} E-Gift Card(s)`;
-        });        
+        // Format the count of cards in the desired format
+        const cardCounts = Object.entries(countNumbers)
+    .map(([num, count]) => `${num} Rs :- ${count} E-Gift Card(s)`)
+    .join("\n");
 
-        resultDiv.innerHTML = `
-            <div class="result">
-                <h3>Results</h3>
-                <p>Combination: ${combination.join(", ")}</p>
-                <p>Exceeding Balance: ${exceedingBalance}</p>
-            </div>
-        `;
+// Replace newline characters with <br> for HTML display
+cardsNeededDiv.innerHTML = cardCounts.replace(/\n/g, "<br>");
+
     } else {
-        resultDiv.innerHTML = "<div class='result'><p>No combination found to exceed the target number.</p></div>";
+        cardsNeededDiv.textContent = "No valid cards needed.";
     }
 });
 

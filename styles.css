@@ -72,7 +72,7 @@ button {
     display: flex;
     justify-content: space-between;
     margin: 10px auto;
-    max-width: 500px;
+    max-width: 700px;
     padding: 15px;
     color: white;
     font-size: 20px;
@@ -95,10 +95,10 @@ button {
     margin: 20px auto; /* Center horizontally with automatic margins */
     display: flex;
     flex-wrap: wrap;
+    padding-top: 20px; /* Adds space inside the container above the title */
     justify-content: center;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
-    padding: 40px;
     background-size: cover;
     transition: background 0.3s ease;
     max-width: 900px; /* Restrict the maximum width */
@@ -172,3 +172,16 @@ button {
         width: 100%;
     }
 }
+.checkbox-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px; /* Space between title and images */
+    text-shadow: 1px 1px 2px black;
+    width: 100%; /* Ensure it takes full width of the container */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+

@@ -12,44 +12,49 @@
 <body>
     <h1 style="text-align: center; padding-top: 20px;">Stream E-Gift Card Calculator</h1>
     <form id="calculator-form">
-        <input type="number" id="target" placeholder="Enter Amount" required>
+        <input type="number" id="target" placeholder="Enter Purchase Amount" required>
         <button type="submit">Calculate</button>
     </form>
+
+    <div class="checkbox-group">
+        <div class="checkbox-title">Select the available e-gift card</div>
+        <!-- Images clickable to toggle selection -->
+        <label>
+            <img src="assets/e1000.png" alt="1000" data-value="1000">
+
+        </label>
+        <label>
+            <img src="assets/e500.png" alt="500" data-value="500">
+
+        </label>
+        <label>
+            <img src="assets/e250.png" alt="250" data-value="250">
+
+        </label>
+        <label>
+            <img src="assets/e150.png" alt="150" data-value="150">
+
+        </label>
+        <label>
+            <img src="assets/e99.png" alt="99" data-value="99">
+
+        </label>
+    </div>
 
     <!-- Total Cost and Balance display -->
     <div class="cost-container">
         <div>
             <h3>Total Cost:</h3>
-            <p id="total-cost">0</p>
+            <p id="total-cost">0 Rs</p>
         </div>
         <div>
             <h3>Balance:</h3>
-            <p id="balance">0</p>
+            <p id="balance">0 Rs</p>
         </div>
-    </div>
-
-    <div class="checkbox-group">
-        <!-- Images clickable to toggle selection -->
-        <label>
-            <img src="assets/e1000.png" alt="1000" data-value="1000">
-            <div class="count-text"></div>
-        </label>
-        <label>
-            <img src="assets/e500.png" alt="500" data-value="500">
-            <div class="count-text"></div>
-        </label>
-        <label>
-            <img src="assets/e250.png" alt="250" data-value="250">
-            <div class="count-text"></div>
-        </label>
-        <label>
-            <img src="assets/e150.png" alt="150" data-value="150">
-            <div class="count-text"></div>
-        </label>
-        <label>
-            <img src="assets/e99.png" alt="99" data-value="99">
-            <div class="count-text"></div>
-        </label>
+        <div>
+            <h3>Cards needed:</h3>
+            <p class="count-text">0 Rs :- 0 E-Gift Card(s)</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
